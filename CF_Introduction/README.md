@@ -5,3 +5,4 @@
 - We will look at the structure of the files later
 
 - We will how in no-time, we are able to get started with CF
+- ![SimpleEC2](./images/file1.png)
