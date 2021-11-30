@@ -2,4 +2,5 @@ Resources:
   MyS3Bucket:
     Type: AWS::S3::Bucket
     Properties: 
-      BucketName: talant-bucket-name-demo-s3
+      BucketName: talant-bucket-demo
+      AccessControl: Private
