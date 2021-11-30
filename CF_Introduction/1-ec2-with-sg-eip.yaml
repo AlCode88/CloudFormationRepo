@@ -1,0 +1,43 @@
+
+Resources:
+  CloudFormationIntroEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-01cc34ab2709337aa
+      InstanceType: t2.micro
+      SecurityGroups:
+        - !Ref ServerSecurityGroupCF
+        - !Ref SSHSecurityGroupCF
+
+  # an elastic IP for our instance
+  MyCFEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      InstanceId: !Ref CloudFormationIntroEC2
+
+  # our EC2 security group
+  SSHSecurityGroupCF:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22 for my IP
+      SecurityGroupIngress:
+      - CidrIp: 76.245.14.60/32
+        FromPort: 22
+        IpProtocol: tcp
+        ToPort: 22
+
+  # our second EC2 security group
+  ServerSecurityGroupCF:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow Connection From My IP and port 80
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 76.245.14.60/32

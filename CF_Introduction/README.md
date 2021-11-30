@@ -6,3 +6,10 @@
 
 - We will how in no-time, we are able to get started with CF
 - ![SimpleEC2](./images/file1.png)
+
+
+# How CloudFormation Works
+- Templates must be uploaded in S3 and then referenced in CF
+- To update a template, we can not edit previous ones. We have to re-upload a new version of the template to AWS
+- Stacks are identified by a name
+- Deleting a stack deletes every single artifact that was created by CF
