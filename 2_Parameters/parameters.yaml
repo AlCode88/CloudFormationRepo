@@ -57,7 +57,7 @@ Parameters:
   DbSubnetIpBlocks:
     Description: "Comma-delimited list of three CIDR blocks"
     Type: CommaDelimitedList
-    Default: "10.0.0.0/24, 10.0.01.0/24, 10.0.0.0/24"
+    Default: "172.31.0.0/20, 172.31.16.0/20, 172.31.64.0/20"
 
 
 ######################## RESOURCES ####################################
