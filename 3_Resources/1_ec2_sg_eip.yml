@@ -3,7 +3,7 @@ Parameters:
   InstanceType:
     Description: WebServer EC2 instance type
     Type: AWS::SSM::Parameter::Value<String>
-    Default: /dev/ec2/instanceType
+    Default: /ec2/instanceType
 
 # Fetch the Amazon Linux latest ami  
   ImageId:
@@ -16,7 +16,7 @@ Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: !Ref InstanceType
+      ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType
       SecurityGroups:
         - !Ref SSHSecurityGroup
