@@ -2,7 +2,7 @@ Parameters:
   EnvironmentName:
     Description: Environment Name
     Type: String
-    AllowedValues: [development, production]
+    AllowedValues: [dev, prod]
     ConstraintDescription: must be development or production
 
 Mappings:
@@ -16,10 +16,10 @@ Mappings:
     us-west-2:
       HVM64: ami-0518bb0e75d3619ca
   EnvironmentToInstanceType:
-    development:
+    dev:
       instanceType: t2.micro
     # we want a bigger instance type in production
-    production:
+    prod:
       instanceType: t2.small
 
 Resources:
