@@ -1,0 +1,57 @@
+############### PARAMETERS ###############################################
+Parameters:  
+  ParamImageId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+  EnvType:
+    Description: Environment type.
+    Default: test
+    Type: String
+    AllowedValues:
+      - prod
+      - test
+    ConstraintDescription: must specify prod or test
+  
+  ParamInstanceType:
+    Description: WebServer EC2 instance type
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /ec2/instanceType
+
+############# CONDITIONS ##########################
+Conditions:
+  anyConditionName: !Equals [ !Ref EnvType, prod ]
+
+############# RESOURCES ###########################
+Resources:
+  DemoEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ParamImageId
+      InstanceType: !Ref ParamInstanceType
+      
+  VolumeAttachment:
+    Type: AWS::EC2::VolumeAttachment
+    Condition: anyConditionName
+    Properties:
+      InstanceId:
+        !Ref DemoEC2Instance
+      VolumeId:
+        !Ref NewEbsVolume
+      Device: /dev/sdh
+
+  NewEbsVolume:
+    Type: AWS::EC2::Volume
+    Condition: anyConditionName
+    Properties:
+      Size: 1
+      AvailabilityZone:
+        !GetAtt DemoEC2Instance.AvailabilityZone  #To get an attribute of the Instance
+
+
+################# OUTPUTS ###################
+Outputs:
+  VolumeId:
+    Condition: anyConditionName
+    Value:
+      !Ref NewEbsVolume
