@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Configure the AWSCloudFormationStackSetAdministrationRole to enable use of AWS CloudFormation StackSets.
+Description: AWSCloudFormationStackSetAdministrationRole to enable use of AWS CloudFormation StackSets demo
 
 Resources:
   AdministrationRole:
@@ -16,7 +16,7 @@ Resources:
               - sts:AssumeRole
       Path: /
       Policies:
-        - PolicyName: AssumeRole-AWSCloudFormationStackSetExecutionRole
+        - PolicyName: AssumeRole-AWSCloudFormationStackSetExecutionRole demo
           PolicyDocument:
             Version: 2012-10-17
             Statement:
