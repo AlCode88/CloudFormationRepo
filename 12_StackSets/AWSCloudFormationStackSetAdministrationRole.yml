@@ -16,7 +16,7 @@ Resources:
               - sts:AssumeRole
       Path: /
       Policies:
-        - PolicyName: AssumeRole-AWSCloudFormationStackSetExecutionRole demo
+        - PolicyName: AssumeRole-AWSCloudFormationStackSetExecutionRole
           PolicyDocument:
             Version: 2012-10-17
             Statement:
