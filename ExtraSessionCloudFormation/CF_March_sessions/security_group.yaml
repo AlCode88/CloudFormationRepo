@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+### Parameters ###
+Parameters:
+  SecurityGroupName:
+    Type: String
+
+  VpcId:
+    Type: String
+  
+  EnvTag:
+    Type: String
+
+  TeamTag:
+    Type: String
+
+
+### Resources ###
+Resources:
+  ExampleSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Ref SecurityGroupName
+      GroupDescription: !Ref SecurityGroupName
+      VpcId: !Ref VpcId
+      Tags:
+        - Key: "Environment"
+          Value: !Ref EnvTag
+        - Key: "Team"
+          Value: !Ref TeamTag
+
+
+### Outputs ###
+Outputs:
+  SecurityGroupID:
+    Value: !Ref ExampleSecurityGroup
+    Description: "Security Group ID"
+    Export:
+      Name: ExampleSecurityGroupID

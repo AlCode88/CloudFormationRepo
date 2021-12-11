@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  AwsSessionEC2:          ##CloudFormation Resource Name##
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-03657b56516ab7912
+      InstanceType: t2.micro
+      SubnetId: subnet-97a87efc
+      SecurityGroupIds: 
+      - sg-02efc45825c3a2839
+      - !Ref AwsSessionEC2SecurityGroup
+      KeyName: talantsmackey
+  AwsSessionEC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: "this is for EC2"
+      GroupName: EC2-sg
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0 
+      VpcId: vpc-15eb457e
+
+
+
+        
+     

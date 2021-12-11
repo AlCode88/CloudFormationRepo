@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+### Parameters ###
+Parameters:
+  VpcId:
+    Type: String
+
+  EnvTag:
+    Type: String
+
+  TeamTag:
+    Type: String
+  
+  CidrIp: 
+    Type: String
+    
+
+
+
+### Resources ###
+Resources:
+  TestSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Test EC2 instance SG"
+      GroupName: "TestEC2-sg"
+      VpcId: !Ref VpcId
+      Tags:
+        - Key: Env
+          Value: !Ref EnvTag
+        - Key: Team
+          Value: !Ref  TeamTag
+        - Key: Name
+          Value: CF_SG_name
+  
+  
+  ExampleSecurityGroup:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      IpProtocol: tcp
+      CidrIp: !Ref CidrIp
+      GroupId: !Ref TestSecurityGroup
+      FromPort: 22
+      ToPort: 22
+
+
+### Otputs ###
+Outputs:
+  TestSecurityGroupId:
+    Description: "Test Security Group Id"
+    Value: !Ref TestSecurityGroup
+    Export:
+      Name: TestSecurityGroup

@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+### Parameters ###
+Parameters:
+  CidrIp:
+    Type: String
+    Default: "0.0.0.0/0"
+
+  ExampleIngressRuleDescription:
+    Type: String
+    Default: "test example"
+
+  IpProtocol:
+    Type: String
+    Default: "tcp"
+    AllowedValues:
+      - tcp
+      - udp
+      - icmp
+      - icmp6
+
+
+### Resources ###
+Resources:
+  ExampleIngressRules:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      CidrIp: !Ref CidrIp
+      Description: "Testing Security Group Ingress"
+      FromPort: 443
+      ToPort: 443
+      IpProtocol: !Ref IpProtocol
+      GroupId: !ImportValue ExampleSecurityGroupID  # to impor the value from the different stack
+ 
+
+### Outputs ###
+# Outputs:

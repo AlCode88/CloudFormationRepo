@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+### Resources
+Resources:
+  ExampleS3Bucket:  # LogicalID of the resource which is unique within the terraform.
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: cloudformation-session1-test-198800-1
+      Tags:
+        - Key: Owner
+          Value: AlCode88
