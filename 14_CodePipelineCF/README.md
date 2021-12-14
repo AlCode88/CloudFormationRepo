@@ -1,0 +1,4 @@
+# CODEPIPELINE CODES
+
+![CODEPIPELINE](./images/14-1.png)
+![CODEPIPELINE](./images/14-2.png)
