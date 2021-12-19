@@ -1,0 +1,3 @@
+# WAIT CONDITION AND DYNAMIC REFERECES
+
+![WAIT1](./images/wait1.png)
