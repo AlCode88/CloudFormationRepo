@@ -21,7 +21,7 @@ Resources:
       UserName: 'sample-user'
       LoginProfile:
         # ssm-secure dynamic reference (latest version)
-        Password: '{{resolve:ssm-secure:/iam/userPassword}}'
+        Password: '{{resolve:ssm-secure:/iam/userPassword}}' 
 
   MyDBInstance:
     Type: AWS::RDS::DBInstance
