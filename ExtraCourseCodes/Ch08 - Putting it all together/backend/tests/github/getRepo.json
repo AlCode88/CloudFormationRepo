@@ -1,7 +1,0 @@
-{
-  "field": "getRepo",
-  "arguments": {
-    "owner": "iDVB",
-    "name": "middy-reroute"
-  }
-}

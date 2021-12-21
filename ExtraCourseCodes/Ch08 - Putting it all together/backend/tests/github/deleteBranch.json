@@ -1,7 +1,0 @@
-{
-  "field": "deleteBranch",
-  "arguments": {
-    "repository": "course-mastering-aws-cloudformation",
-    "name": "feat-cam"
-  }
-}
