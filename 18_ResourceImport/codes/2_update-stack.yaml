@@ -19,5 +19,5 @@ Resources:
     Type: AWS::EC2::Instance
     DeletionPolicy: Retain
     Properties:
-      ImageId: ami-043097594a7df80ec
+      ImageId: ami-043097594a7df80ec # You need to specify the Ami must be the same as it is on the console
       InstanceType: t2.micro
